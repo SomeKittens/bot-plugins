@@ -1,5 +1,5 @@
 module.exports = function (bot, IO) {
-"use strict";
+'use strict';
 
 var fahrenheitCountries = Object.TruthMap([
 	//the API returns US in a variety of forms...
@@ -134,3 +134,4 @@ bot.addCommand({
 	description : 'Gets current weather: ' +
 		'`/weather (lan, lon)` or `/weather city`'
 });
+};
