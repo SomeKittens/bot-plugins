@@ -1,0 +1,13 @@
+Need better understanding of IO
+afk
+mdn
+meme
+
+Need to be split up into two files
+ban
+
+Somewhat done but other things interfere:
+color: Remote server is down.
+
+Notes
+mustache needs alias to moustache (#176)
