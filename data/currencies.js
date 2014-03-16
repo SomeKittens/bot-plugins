@@ -3,7 +3,7 @@ JSON.stringify([].map.call(f.from.options, function (e) { return e.value; }, {})
 for some reason, NIS (New Israeli Shekel) does not appear there, only ILS,
 despite Google accepting both. it was added manually
 */
-currencies = Object.TruthMap([
+exports.currencies = Object.TruthMap([
     "AED",
     "ANG",
     "ARS",
@@ -99,7 +99,7 @@ currencies = Object.TruthMap([
     "ZAR",
     "ZMK"
 ]);
-symbols = {
+exports.symbols = {
     //euro €
     "\u20ac" : "EUR",
 

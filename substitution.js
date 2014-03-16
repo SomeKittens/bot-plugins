@@ -1,4 +1,4 @@
-(function () {
+module.exports = function (bot, IO) {
 /*
   ^\s*         #tolerate pre-whitespace
   s            #substitution prefix
@@ -93,12 +93,11 @@ function retrieve_full_text ( message, cb ) {
 	var href = message.children[ 1 ].href;
 	bot.log( href, 'substitution expanding message' );
 
-	IO.xhr({
-		method : 'GET',
+	IO.request({
 		url : href,
 		data : { plain : true },
 		complete : cb
 	});
 }
 
-}());
+};

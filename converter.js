@@ -1,4 +1,4 @@
-(function () {
+module.exports = function (bot, IO) {
 "use strict";
 
 var converters = {
@@ -102,8 +102,9 @@ var longNames = {
 	stones : 'st',
 };
 
-var currencies, symbols; //to be filled in next line by build
-//#build ../static/currencies.js
+var currencies = require('./data/currencies').currencies,
+    symbols = require('./data/currencies').symbols; //to be filled in next line by build
+
 
 function unalias ( unit ) {
 	var up = unit.toUpperCase();
@@ -266,14 +267,13 @@ var moneyConverter = {
 			return;
 		}
 
-		IO.jsonp({
+		IO.request({
 			url : 'http://rate-exchange.appspot.com/currency',
-			jsonpName : 'callback',
 			data : {
 				from : self.from,
 				to : self.to
 			},
-			fun : finish
+			complete : finish
 		});
 
 		function finish ( resp ) {
@@ -333,4 +333,4 @@ bot.addCommand({
 		'Pass in list for supported units `/convert list`',
 	async : true
 });
-}());
+};

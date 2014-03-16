@@ -1,7 +1,7 @@
-(function () {
+module.exports = function (bot, IO) {
 
 function mdn ( args, cb ) {
-	IO.jsonp.google(
+	IO.google(
 		args.toString() + ' site:developer.mozilla.org', finishCall );
 
 	function finishCall ( resp ) {
@@ -34,4 +34,4 @@ bot.addCommand({
 	async : true
 });
 
-})();
+};

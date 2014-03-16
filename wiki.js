@@ -1,17 +1,16 @@
-(function () {
+module.exports = function (bot, IO) {
 "use strict";
 
 function command ( args, cb ) {
-	IO.jsonp({
+	IO.request({
 		url : 'http://en.wikipedia.org/w/api.php',
-		jsonpName : 'callback',
 		data : {
 			action : 'opensearch',
 			search : args.toString(),
 			limit : 1,
 			format : 'json'
 		},
-		fun : finish
+		complete : finish
 	});
 
 	function finish ( resp ) {
@@ -59,4 +58,4 @@ bot.addCommand({
 	description : 'Search Wikipedia. `/wiki term`',
 	async : true
 });
-})();
+};

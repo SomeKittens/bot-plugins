@@ -1,4 +1,4 @@
-(function () {
+module.exports = function (bot, IO) {
 
 var nulls = [
 	'The Google contains no such knowledge',
@@ -26,7 +26,7 @@ var command = {
 	},
 
 	logic : function ( query, cb ) {
-		IO.jsonp.google( String(query) + ' -site:w3schools.com', finishCall );
+		IO.google( String(query) + ' -site:w3schools.com', finishCall );
 
 		function finishCall ( resp ) {
 			bot.log( resp, '/google response' );
@@ -79,4 +79,4 @@ var command = {
 };
 
 bot.addCommand( command );
-}());
+};

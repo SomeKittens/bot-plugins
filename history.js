@@ -1,4 +1,4 @@
-(function () {
+module.exports = function (bot, IO) {
 "use strict";
 
 var history = {
@@ -125,9 +125,8 @@ var history = {
 		var url = 'http://en.wikipedia.org/w/api.php';
 
 		var self = this;
-		IO.jsonp({
+		IO.request({
 			url : url,
-			jsonpName : 'callback',
 			data : {
 				format : 'json',
 				action : 'parse',
@@ -135,7 +134,7 @@ var history = {
 				prop : 'text',
 				page : titles.join( ' ' )
 			},
-			fun : function ( resp ) {
+			complete : function ( resp ) {
 				self.handleResponse( resp, params, cb );
 			}
 		});
@@ -247,4 +246,4 @@ bot.addCommand({
 	async : true
 });
 
-})();
+};

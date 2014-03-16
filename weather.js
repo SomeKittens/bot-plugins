@@ -37,7 +37,7 @@ var weather = {
 				type : 'json'
 			},
 
-			fun : this.finishCb( cb ),
+			complete : this.finishCb( cb ),
 			error : this.errorCb( cb )
 		});
 	},
@@ -50,7 +50,7 @@ var weather = {
 				type : 'json'
 			},
 
-			fun : this.finishCb( cb ),
+			complete : this.finishCb( cb ),
 			error : this.errorCb( cb )
 		});
 	},

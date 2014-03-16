@@ -1,3 +1,5 @@
+module.exports = function(bot, IO) {
+'use strict';
 // issue #51 introduced this feature; #97 added user search.
 
 //valid args are one of the following:
@@ -70,19 +72,18 @@ var github = {
 	},
 
 	searchRepo : function ( repoName, cb ) {
-		IO.jsonp({
+		IO.request({
 			url : 'https://api.github.com/search/repositories',
 			data : {
 				q : repoName
 			},
-			jsonpName : 'callback',
 
-			fun : finish
+			complete : finish
 		});
 
 		function finish ( resp ) {
 			bot.log( resp, '/github searchRepo response' );
-			var repo = ( resp.data.items || [] )[ 0 ];
+			var repo = ( resp.items || [] )[ 0 ];
 
 			repo = repo || { error : 'No results found' };
 			repo.type = 'repo';
@@ -96,7 +97,7 @@ var github = {
 
 		function finish ( resp ) {
 			bot.log( resp, '/github searchUser response' );
-			var user = ( resp.data.items || [] )[ 0 ];
+			var user = ( resp.items || [] )[ 0 ];
 
 			user = user || { error : 'No results found.' };
 			user.type = 'user';
@@ -110,12 +111,11 @@ var github = {
 	},
 
 	sendAPIQuery : function ( path, data, cb ) {
-		IO.jsonp({
+		IO.request({
 			url : 'https://api.github.com' + path,
 			data : data,
-			jsonpName : 'callback',
 
-			fun : cb
+			complete : cb
 		});
 	}
 };
@@ -132,3 +132,4 @@ bot.addCommand({
 		'`/github username/`',
 	async : true
 });
+};

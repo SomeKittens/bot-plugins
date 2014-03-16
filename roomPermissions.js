@@ -24,7 +24,7 @@ setTimeout( checkMuted, 60 * 1000 );
 function giveVoice ( id, cb ) {
 	bot.log( 'giving voice to ' + id );
 
-	IO.xhr({
+	IO.request({
 		method : 'POST',
 		url : '/rooms/setuseraccess/' + ownerRoom,
 		data : {
@@ -51,7 +51,7 @@ function giveVoice ( id, cb ) {
 function takeVoice ( params, cb ) {
 	bot.log( 'taking voice', params );
 
-	IO.xhr({
+	IO.request({
 		method : 'POST',
 		url : '/rooms/setuseraccess/' + ownerRoom,
 		data : {

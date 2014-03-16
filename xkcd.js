@@ -1,4 +1,4 @@
-(function() {
+module.exports = function(bot, IO) {
 //Gets or sets a XKCD comic-type thing
 //just kidding! we can't set one. I'm just used to crappy javadoc style.
 //*sniffle*
@@ -16,18 +16,17 @@ function getXKCD( args, cb ) {
 	//they want to search for a certain comic
 	else if ( prop && prop !== 'new' ) {
         bot.log( '/xkcd search', args.toString() );
-		IO.jsonp.google(
+		IO.google(
             args.toString() + ' site:xkcd.com -forums.xkcd -m.xkcd -fora.xkcd',
             finishGoogleQuery );
 		return;
 	}
 
-    bot.log( '/xkcd random/latest', prop );
+  bot.log( '/xkcd random/latest', prop );
 	//they want a random XKCD, or the latest
-	IO.jsonp({
+	IO.request({
 		url : 'http://dynamic.xkcd.com/api-0/jsonp/comic',
-		jsonpName : 'callback',
-		fun : finishXKCD
+		complete : finishXKCD
 	});
 
 	function finishXKCD ( resp ) {
@@ -89,4 +88,4 @@ bot.addCommand({
 	async : true
 });
 
-})();
+};

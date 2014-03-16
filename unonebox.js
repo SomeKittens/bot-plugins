@@ -81,15 +81,15 @@ var unonebox = {
 	},
 
 	actuallyUnbox : function ( msgId, href ) {
-		IO.xhr({
+		IO.request({
 			url: '/messages/' + msgId,
 			data: fkey({
 				text: href + ' ... '
 			}),
 			method: 'POST',
 
-			complete : function (resp, xhr) {
-				bot.log( xhr, '/unonebox done unboxing' );
+			complete : function (resp) {
+				bot.log( resp, '/unonebox done unboxing' );
 				// TODO
 				// error checking
 			}

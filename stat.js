@@ -1,4 +1,4 @@
-(function () {
+module.exports = function (bot, IO) {
 "use strict";
 
 //how an API response looks like:
@@ -68,14 +68,14 @@ function stat ( msg, cb ) {
 		return;
 	}
 
-	IO.jsonp({
+	IO.request({
 		url : 'https://api.stackexchange.com/2.2/users/' + id,
 		data : {
 			site   : bot.adapter.site,
 			//see top of file.
 			filter :  '!P)usXx8OGi3Eq5LdDJke7ybvCSm_vuVGrSDZs3)UmEI'
 		},
-		fun : done
+		complete : done
 	});
 
 	function done ( resp ) {
@@ -180,4 +180,4 @@ bot.addCommand( cmd );
 var statsCmd = Object.merge( cmd, { name : 'stats'} );
 bot.addCommand( statsCmd );
 
-}());
+};

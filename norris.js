@@ -1,12 +1,11 @@
-(function () {
+module.exports = function (bot, IO) {
 
 function norris ( args, cb ) {
 	var chucky = 'http://api.icndb.com/jokes/random';
 
-	IO.jsonp({
+	IO.request({
 		url : chucky,
-		fun : finishCall,
-		jsonpName : 'callback'
+		complete : finishCall,
 	});
 
 	function finishCall ( resp ) {
@@ -37,4 +36,4 @@ bot.addCommand({
 	async : true
 });
 
-})();
+};

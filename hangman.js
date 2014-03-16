@@ -1,4 +1,4 @@
-(function () {
+module.exports = function (bot, IO) {
 "use strict";
 
 var randomWord = function ( length, cb ) {
@@ -8,10 +8,10 @@ var randomWord = function ( length, cb ) {
 		url += '?length=' + length;
 	}
 
-	IO.jsonp({
+	IO.request({
 		url : url,
 		jsonpName : 'callback',
-		fun : complete //aaawwww yyeeaaahhhh
+		complete : complete //aaawwww yyeeaaahhhh
 	});
 
 	function complete ( resp ) {
@@ -194,4 +194,4 @@ bot.addCommand({
 	fun : game.receiveMessage,
 	thisArg : game
 });
-}());
+};

@@ -1,4 +1,4 @@
-(function () {
+module.exports = function (bot, IO) {
 "use strict";
 //welcomes new users with a link to the room rules and a short message.
 
@@ -30,7 +30,7 @@ IO.register( 'userregister', function ( user, room ) {
 		return;
 	}
 
-	IO.xhr({
+	IO.request({
 		method : 'GET',
 		url : '/users/' + user.id,
 
@@ -87,4 +87,4 @@ bot.addCommand({
 	},
 	description : 'Welcomes a user. `/welcome user`'
 });
-}());
+};

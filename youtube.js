@@ -1,19 +1,18 @@
-(function () {
+module.exports = function (bot, IO) {
 var nulls = [
 	'Video not found (rule 35?)',
 	'I could not find such a video',
 	'The Lords of YouTube did not find your query favorable' ];
 function youtube ( args, cb ) {
-	IO.jsonp({
+	IO.request({
 		url : 'https://gdata.youtube.com/feeds/api/videos',
-		jsonpName : 'callback',
 		data : {
 			q : args.toString(),
 			'max-results' : 1,
 			v : 2,
 			alt : 'json'
 		},
-		fun : finish
+		complete : finish
 	});
 
 	//the response looks something like this:
@@ -51,4 +50,4 @@ bot.addCommand({
 	description : 'Search Youtube. `/youtube query`',
 	async : true
 });
-}());
+};
