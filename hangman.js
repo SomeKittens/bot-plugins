@@ -2,10 +2,10 @@ module.exports = function (bot, IO) {
 "use strict";
 
 var randomWord = function ( length, cb ) {
-	var url = 'http://sleepy-bastion-8674.herokuapp.com/';
+	var url = 'http://sleepy-bastion-8674.herokuapp.com?callback=callback';
 
 	if ( Number(length) ) {
-		url += '?length=' + length;
+		url += '&length=' + length;
 	}
 
 	IO.request({

@@ -1,4 +1,4 @@
-(function () {
+module.exports = function (bot, IO) {
 var undo = {
 	ids : [],
 
@@ -147,4 +147,4 @@ bot.addCommand({
 		'`/undo ~N` for the Nth message from the end'
 });
 
-}());
+};
