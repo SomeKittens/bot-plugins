@@ -1,0 +1,22 @@
+{
+  "name": "bot-plugins",
+  "version": "0.0.0",
+  "description": "Plugins for SO Chat Bot",
+  "main": "null",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SomeKittens/bot-plugins.git"
+  },
+  "author": "God",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SomeKittens/bot-plugins/issues"
+  },
+  "homepage": "https://github.com/SomeKittens/bot-plugins",
+  "dependencies": {
+    "jsdom": "~0.10.3"
+  }
+}
