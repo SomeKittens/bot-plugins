@@ -19,9 +19,10 @@ module.exports = function(bot, IO) {
 	
 	bot.addCommand({
 		name : 'color',
+		fun	 : color,
 		permissions : {
-			del : 'NONE'
-		},
+		del : 'NONE'
+	},
 	
 		description : 'Displays the' +
 			'color(s) passed in as RGB, hexadecimal' +
