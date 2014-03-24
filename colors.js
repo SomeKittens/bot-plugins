@@ -1,23 +1,34 @@
 'use strict';
-
-function color ( args ) {
-	var base = 'http://southouse.tk/colors.php?color='
-	var param = args.toString()
-		.toLowerCase()
-		.match( /([a-z0-9]+)+/g )
-		.join( ',' );
-
-
-	args.directreply( base + param + '#.png' );
-}
-
-module.exports = {
-	name : 'color',
-	fun : color,
-	permissions : {
+module.exports = function(bot, IO) {
+	function color ( args ) {
+		var outType, base, param;
+		
+		if ( args.match( /-g/ ) ) { //the only flag for this is g(gradient)
+			outType = 'gradient=';
+		} else outType = 'color=';
+		
+		base = 'http://somethinghitme.com/color/' +
+			'colors.php?';
+		
+		param = args.toLowerCase()
+			.replace( /-[a-z]*/, '' )//strip all flags
+			.match( /([a-z0-9]+)+/g );
+	
+		args.directreply( base + outType + param + '#.png' );
+	}
+	
+	bot.addCommand({
+		name : 'color',
+		fun	 : color,
+		permissions : {
 		del : 'NONE'
 	},
-
-	description : 'Displays the color(s) passed in. ' +
-		' `/color color0[ color1[ ...]]`'
+	
+		description : 'Displays the' +
+			'color(s) passed in as RGB, hexadecimal' +
+			'or hex-shorthand or standard color names' +
+			'(if it works in CSS it should work here). ' +
+			' `/color color0[ color1[ ...]]`' +
+			'use -g for gradient'
+	};
 };
