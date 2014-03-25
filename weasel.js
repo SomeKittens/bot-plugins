@@ -1,4 +1,5 @@
-(function () {
+'use strict';
+module.exports = function (bot, IO) {
 //meet Winded Weasel. he helps you make decisions and he answers questions.
 //x or y [or z ...]
 // => one of x, y, z, ...
@@ -121,4 +122,4 @@ bot.listen(questionRe, function questionListener () {
 	return answers.random();
 });
 
-}());
+};
