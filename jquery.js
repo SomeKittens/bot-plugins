@@ -1,4 +1,5 @@
-(function () {
+'use strict';
+module.exports = function (bot, IO) {
 var baseURL = 'http://api.jquery.com/';
 
 function jquery ( args ) {
@@ -78,4 +79,4 @@ bot.addCommand({
 	description : 'Fetches documentation link from jQuery API. `/jquery what`',
 });
 
-})();
+};
