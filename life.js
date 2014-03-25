@@ -1,3 +1,4 @@
+'use strict';
 module.exports = function(bot, IO) {
 	bot.addCommand({
 		name : 'live',
@@ -26,4 +27,4 @@ module.exports = function(bot, IO) {
 		permissions : { del : 'NONE', use : 'OWNER' },
 		description : 'Kills me :(',
 	}));
-}
+};
